@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Tools
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+
+# Docs build
+site/
+
+# Model weights and downloads (never commit them)
+*.pt
+*.pth
+*.safetensors
+*.onnx
+simcitynet_examples/
+tests/data/*.jpg
+tests/data/*.png
+tests/data/CREDITS.csv
+
+# Outputs
+embeddings.csv
+embeddings.json
+similarity.csv
+card.png
+
+# OS
+.DS_Store
+Thumbs.db
+.cache/

@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use simcitynet, please cite the software and the SimCityNet paper."
+title: "simcitynet: interpretable scene embeddings for street-level images"
+type: software
+version: "0.1.0"
+date-released: "2026-11-19"
+license: MIT
+repository-code: "https://github.com/hpa-code/simcitynet"
+url: "https://hpa-code.github.io/simcitynet/"
+keywords:
+  - urban analytics
+  - image embedding
+  - street view
+  - generative AI audit
+  - algorithmic fairness
+authors:
+  - family-names: Caliskan
+    given-names: Cantay
+    affiliation: "University of Rochester"
+  - family-names: Iskakov
+    given-names: Abylay
+    affiliation: "University of Rochester"
+  - family-names: Li
+    given-names: Yuanzhu
+    affiliation: "University of Rochester"
+  - family-names: McCollum
+    given-names: Brendan
+    affiliation: "University of Rochester"
+  - family-names: Ren
+    given-names: Yi
+    affiliation: "University of Rochester"
+preferred-citation:
+  type: article
+  title: "SimCityNet: Quantifying Geo-Cultural Bias in AI-Generated Urban Videos through Interpretable Scene Embeddings"
+  authors:
+    - family-names: Caliskan
+      given-names: Cantay
+    - family-names: Iskakov
+      given-names: Abylay
+    - family-names: Li
+      given-names: Yuanzhu
+    - family-names: McCollum
+      given-names: Brendan
+    - family-names: Ren
+      given-names: Yi
+  year: 2025
+  month: 7
+  journal: "SSRN Electronic Journal"
+  doi: "10.2139/ssrn.5369073"
+  url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5369073"

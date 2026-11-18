@@ -1,0 +1,110 @@
+site_name: simcitynet
+site_description: Interpretable 33-dimensional scene embeddings and similarity for street-level images
+site_url: https://hpa-code.github.io/simcitynet/
+repo_url: https://github.com/hpa-code/simcitynet
+repo_name: hpa-code/simcitynet
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 Cantay Caliskan and contributors · MIT License
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.tabs.link
+    - search.highlight
+    - search.suggest
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: false
+            show_root_heading: true
+            show_signature_annotations: true
+            separate_signature: true
+            members_order: source
+            merge_init_into_class: true
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: installation.md
+      - Quick start: quickstart.md
+      - The 33 dimensions: concepts.md
+  - Tutorials:
+      - 1. Quick start: tutorials/01_quickstart.ipynb
+      - 2. Europe vs the Middle East: tutorials/02_europe_vs_middle_east.ipynb
+      - 3. Video frames: tutorials/03_video_frames.ipynb
+      - 4. Customising: tutorials/04_customising.ipynb
+  - Reference:
+      - Python API: api.md
+      - Command line: cli.md
+  - Research:
+      - Faithfulness to the paper: faithfulness.md
+      - Limitations and ethics: limitations.md
+      - Reproducibility: reproducibility.md
+      - Model licences: model_licenses.md
+      - Citation: citation.md
+  - Project:
+      - Contributing: contributing.md
+      - Changelog: changelog.md
