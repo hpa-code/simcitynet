@@ -30,6 +30,9 @@ pip install "simcitynet[all]"     # full pipeline: PyTorch, Transformers and Ult
 pip install simcitynet            # core only: colour block, similarity and plots (no deep learning)
 ```
 
+Until the first PyPI release, install from GitHub:
+`pip install "simcitynet[all] @ git+https://github.com/hpa-code/simcitynet.git"`.
+
 Python 3.10 or newer. A GPU is recommended for large batches; everything also runs on CPU.
 Model weights (about 3 GB) download automatically on first use. Check your setup with
 `simcitynet doctor`.

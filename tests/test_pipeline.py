@@ -189,6 +189,38 @@ def test_load_image_errors(tmp_path):
         load_image(bad)
 
 
+def test_load_image_ignores_ultralytics_pil_patch(tmp_path, monkeypatch):
+    """Ultralytics swaps PIL.Image.open for a wrapper that can pip-install plugins; we bypass it."""
+    import sys
+    import types
+
+    from PIL import Image as PILImage
+
+    real_patches = sys.modules.get("ultralytics.utils.patches")  # loaded if adapter tests ran
+    original = getattr(real_patches, "_image_open", PILImage.open)
+    calls = []
+
+    def patched(*args, **kwargs):
+        calls.append(args)
+        raise ModuleNotFoundError("No module named 'pi_heif'")
+
+    patched.__module__ = "ultralytics.utils.patches"
+    fake = types.ModuleType("ultralytics.utils.patches")
+    fake._image_open = original  # type: ignore[attr-defined]
+    monkeypatch.setitem(sys.modules, "ultralytics.utils.patches", fake)
+    monkeypatch.setattr(PILImage, "open", patched)
+
+    good = tmp_path / "good.png"
+    original_img = street_scene()
+    PILImage.fromarray(original_img).save(good)
+    assert np.asarray(load_image(good)).shape == original_img.shape
+    bad = tmp_path / "bad.jpg"
+    bad.write_text("not an image")
+    with pytest.raises(ValueError, match="Could not read image"):
+        load_image(bad)
+    assert calls == []  # the patched function was never used
+
+
 def test_embed_with_no_images_fails(fake_net, tmp_path):
     with pytest.raises(ValueError, match="No images"):
         fake_net.embed(tmp_path)

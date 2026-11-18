@@ -28,7 +28,7 @@ These need internet and, ideally, a GPU — Google Colab is enough.
 2. **Run the four tutorials and save their outputs**, so the website shows the figures.
    Open each notebook in `docs/tutorials/` in Colab (Runtime → GPU), run all cells, then
    *File → Download .ipynb* and replace the file in `docs/tutorials/`. Until the package is on
-   PyPI, use the commented `git+https://github.com/...` install line in the first cell.
+   PyPI, the first cell installs from GitHub automatically.
 
 3. **Pick a README hero image (optional).** Save a scene card from tutorial 1
    (`fig.savefig("docs/assets/scene_card.png", dpi=150)`) and add it under the pipeline

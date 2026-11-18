@@ -26,6 +26,14 @@
     pip install "simcitynet[yolo]"     # pedestrians and vehicles (Ultralytics, AGPL-3.0)
     ```
 
+!!! note "Before the first PyPI release"
+
+    Install straight from GitHub:
+
+    ```bash
+    pip install "simcitynet[all] @ git+https://github.com/hpa-code/simcitynet.git"
+    ```
+
 ## Check your setup
 
 ```bash

@@ -30,7 +30,10 @@ mkdocs build --strict             # documentation
 ```
 
 The fast test suite never downloads models: the feature blocks are tested on small synthetic
-images with known answers, and the pipeline with fake models (`tests/conftest.py`).
+images with known answers, and the pipeline with fake models (`tests/conftest.py`). With the
+`[all]` extra installed, `tests/test_adapters.py` also runs the real PyTorch, Transformers and
+Ultralytics code paths on tiny randomly initialised models (CI does this in the *Model
+adapters* job).
 
 Before a release, run the real-model tests on a machine with internet (GPU recommended):
 

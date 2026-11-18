@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import glob
 import os
-from collections.abc import Iterable, Iterator
+import sys
+from collections.abc import Callable, Iterable, Iterator
 from pathlib import Path
 from typing import Union
 
@@ -19,13 +20,31 @@ IMAGE_SUFFIXES = frozenset({".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".
 ImageLike = Union[str, os.PathLike, Image.Image, NDArray[np.generic]]  # noqa: UP007
 
 
+_PIL_OPEN = Image.open
+
+
+def _pil_open() -> Callable[..., Image.Image]:
+    """Pillow's own ``Image.open``.
+
+    Ultralytics replaces ``PIL.Image.open`` with a wrapper that tries to ``pip install`` a HEIF
+    plugin whenever a file cannot be identified. Reading user images must not install packages,
+    so the original function is used even after Ultralytics has been imported.
+    """
+    current = Image.open
+    if getattr(current, "__module__", "").startswith("ultralytics"):
+        patches = sys.modules.get("ultralytics.utils.patches")
+        original = getattr(patches, "_image_open", None)
+        return original if callable(original) else _PIL_OPEN
+    return current
+
+
 def load_image(path: str | os.PathLike[str]) -> Image.Image:
     """Open an image file as RGB, applying its EXIF orientation."""
     p = Path(path)
     if not p.is_file():
         raise FileNotFoundError(f"Image not found: {p}")
     try:
-        with Image.open(p) as im:
+        with _pil_open()(p) as im:
             return ImageOps.exif_transpose(im).convert("RGB")
     except OSError as exc:  # PIL raises UnidentifiedImageError (an OSError) for bad files
         raise ValueError(f"Could not read image {p}: {exc}") from exc
