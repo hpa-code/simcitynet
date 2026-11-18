@@ -34,22 +34,18 @@ These need internet and, ideally, a GPU — Google Colab is enough.
    (`fig.savefig("docs/assets/scene_card.png", dpi=150)`) and add it under the pipeline
    diagram in `README.md` and `docs/index.md`. Credit the photo (see `CREDITS.csv`).
 
-## 1. Create the GitHub repository
+## 1. The GitHub repository
 
-Create an **empty public** repository `simcitynet` (no README, licence or .gitignore). Then:
+The code lives at <https://github.com/hpa-code/simcitynet> (public). To work on it locally:
 
 ```bash
+git clone https://github.com/hpa-code/simcitynet.git
 cd simcitynet
-git init -b main
-git add .
-git commit -m "simcitynet 0.1.0"
-git remote add origin https://github.com/hpa-code/simcitynet.git
-git push -u origin main
+pip install -e ".[dev]"
 ```
 
 On the repository page, click the gear next to **About** and set:
 
-- Description: `Interpretable 33-D scene embeddings and similarity for street-level images (SimCityNet).`
 - Website: `https://hpa-code.github.io/simcitynet/`
 - Topics: `python`, `computer-vision`, `urban-analytics`, `street-view`, `image-embedding`,
   `generative-ai`, `algorithmic-fairness`, `computational-social-science`
