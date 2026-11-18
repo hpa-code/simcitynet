@@ -1,0 +1,31 @@
+:root {
+  --scn-veg: #1baf7a;
+  --scn-color: #e87ba4;
+  --scn-ped: #2a78d6;
+  --scn-veh: #eb6834;
+  --scn-surf: #eda100;
+}
+.md-typeset .hero {
+  display: grid;
+  gap: 1.2rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.md-typeset .hero p.tagline {
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+.md-typeset .block-chip {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 2px;
+  margin-right: 0.4em;
+  vertical-align: baseline;
+}
+.md-typeset .grid.cards > ul > li {
+  border-radius: 10px;
+}
+.md-typeset img.diagram {
+  width: 100%;
+  border-radius: 10px;
+}
